@@ -1,0 +1,42 @@
+# Ignore build and compiled files
+x64/
+Debug/
+
+# Ignore Visual Studio files
+*.suo
+*.user
+*.aps
+*.ncb
+*.opendb
+*.sdf
+*.opensdf
+*.cachefile
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+
+# Ignore generated files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+install_manifest.txt
+*.sln
+*.cmake
+
+# Ignore compiled binaries and libraries
+*.exe
+*.dll
+*.so
+*.dylib
+
+
+# Ignore system files
+Thumbs.db
+Desktop.ini
+
+# Ignore macOS directory configuration files
+.DS_Store
+
+# Ignore Visual Studio Code settings
+.vscode/
