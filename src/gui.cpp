@@ -143,3 +143,34 @@ void Editor::DrawTextInput(std::string& txt,int x,int y,int n, int font, int& cu
             lastblink = GetTime()+0.5; // so it doesnt blink while typing
     }
 }
+
+
+bool Editor::DrawCheckbox(int x,int y,bool& ticked,Color ctoff,Color cton, Color bgoff,Color bgon,std::string txt)
+{
+Vector2 pos = GetMousePosition();
+
+    // Draw color button
+    if(ticked)
+    {
+        DrawRectangle(x, y, 25, 25, bgon);
+        DrawText("x", x + 5, y, 25, cton);
+    }
+    else
+    {    
+        DrawRectangle(x, y, 25, 25, bgoff);
+        DrawText("o", x + 5, y, 25, ctoff);
+    }
+    DrawText(txt.c_str(),x+30,y,25,ticked?cton:ctoff);
+    // Check if the button is pressed
+    if((pos.x >= x && pos.x <= x + 25) && (pos.y >= y && pos.y <= y + 25))
+    {
+        SetMouseCursor(MOUSE_CURSOR_POINTING_HAND);
+        cursorishovering = true;
+        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+        {
+            ticked = !ticked;
+        }
+    }
+
+    return false;
+}

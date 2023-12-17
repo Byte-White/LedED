@@ -16,11 +16,16 @@ LedED is an LED matrix editor designed to generate header files that can be embe
 
 ![LedED Editor](https://github.com/Byte-White/MAX7219-Dev/assets/51212450/e206b911-b73d-4fc0-8bca-feab067aa0e8)
 
-### Example Animations
+### Examples
 
-![Example Animation 1](https://github.com/Byte-White/MAX7219-Dev/assets/51212450/4629b9c5-dec6-4e06-8f1a-fcd6a0cf7433)
+![Example 1](https://github.com/Byte-White/MAX7219-Dev/assets/51212450/4629b9c5-dec6-4e06-8f1a-fcd6a0cf7433)
 
-![Example Animation 2](https://github.com/Byte-White/WS2812-Dev/assets/51212450/5996d8b4-5e5e-4b3e-a7aa-5759b8fdda84)
+![Example 2](https://github.com/Byte-White/WS2812-Dev/assets/51212450/5996d8b4-5e5e-4b3e-a7aa-5759b8fdda84)
+
+![Example 3](https://github.com/Byte-White/LedED/assets/51212450/4d2286f2-5aef-4255-a8b7-2dac581fe1ac)
+
+
+
 
 ### Exported Header File
 

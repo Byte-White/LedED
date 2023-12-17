@@ -58,8 +58,8 @@ class Editor
     double leftdowntime = 0.0;
     unsigned int curframe = 0;// index of the frame
     double camera_x = 0.0 ,camera_y = 0.0,camera_scale = 1.0;
-    
-    char hoverdatatext[50];
+    bool singledrawmode = true;
+    char hoverdatatext[60];
     private:
     void RGBAMenu();
     void WBMenu();
@@ -78,5 +78,6 @@ public:
     void Render();
     void Export(const std::string& path,std::string& error);
     void DrawTextInput(std::string& txt,int x,int y,int n,int font,int& cursorlocation,Color bg = GRAY, Color tc = WHITE);
+    bool DrawCheckbox(int x,int y,bool& ticked,Color ctoff = DARKBLUE,Color cton = LIME, Color bgoff = BLUE,Color bgon = DARKGREEN,std::string txt = "");
 };
 

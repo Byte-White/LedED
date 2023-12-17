@@ -55,7 +55,7 @@ void Editor::ResetAll()
 // led buttons
 void Editor::DrawButtons(const int& x_items, const int& y_items)
 {
-    snprintf(hoverdatatext,50,"");
+    snprintf(hoverdatatext,60,"");
     Vector2 pos = GetMousePosition();
     int starting_x = GetScreenWidth() / 4 + camera_x;
     int starting_y = 0 + camera_y; // or GetScreenHeight() / 4 if you want menu at the top 
@@ -107,20 +107,27 @@ void Editor::DrawButtons(const int& x_items, const int& y_items)
                 SetMouseCursor(MOUSE_CURSOR_CROSSHAIR);
                 cursorishovering = true;
                 
-                snprintf(hoverdatatext,50,"hovering over:\nx: %d\ny: %d\n%s",j,i,data[curframe][i*w+j].to_string(rgb_or_bw).c_str());//j - x    i - y
-                
-                if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) // if led color is the same as preview color clear the led
-                {
-                    if(data[curframe][i*w+j] == col)
+                snprintf(hoverdatatext,60,"hovering over:\nx: %d\ny: %d\n%s",j,i,data[curframe][i*w+j].to_string(rgb_or_bw).c_str());//j - x    i - y
+                if(singledrawmode)
+                { // click to draw
+                    if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) // if led color is the same as preview color clear the led
                     {
-                        leddata blank;
-                        blank.r = 0;
-                        blank.g = 0;
-                        blank.b = 0;
-                        blank.a = 255;
-                        data[curframe][i*w+j] = blank;
+                        if(data[curframe][i*w+j] == col)
+                        {
+                            leddata blank;
+                            blank.r = 0;
+                            blank.g = 0;
+                            blank.b = 0;
+                            blank.a = 255;
+                            data[curframe][i*w+j] = blank;
+                        }
+                        else data[curframe][i*w+j]=col;
                     }
-                    else data[curframe][i*w+j]=col;
+                }
+                else
+                { // hold to draw
+                    if (IsMouseButtonDown(MOUSE_BUTTON_LEFT)) 
+                        data[curframe][i*w+j]=col;
                 }
             }
             

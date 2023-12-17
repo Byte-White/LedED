@@ -110,6 +110,8 @@ void Editor::DrawMenu()
             tab = 2; // Export Menu
         }
     }
+    // Drawing Mode
+    DrawCheckbox(10,GetScreenHeight()/2 - 35,singledrawmode,DARKBLUE,LIME,BLUE,DARKGREEN,singledrawmode?"Single":"Draw");
     //------ Hovering Led  -----
     DrawText(hoverdatatext,10,GetScreenHeight()/2,15,WHITE);
 
@@ -162,6 +164,7 @@ void Editor::DrawMenu()
             }
         }
     }
+
 }
 
 void Editor::DrawExportMenu()
