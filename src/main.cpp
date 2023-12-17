@@ -3,7 +3,6 @@
 #include "editor.h"
 #include <string.h>
 
-#include "iconembed.h"
 
 
 int main(int argc,char** argv)

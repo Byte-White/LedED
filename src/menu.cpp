@@ -112,6 +112,8 @@ void Editor::DrawMenu()
     }
     // Drawing Mode
     DrawCheckbox(10,GetScreenHeight()/2 - 35,singledrawmode,DARKBLUE,LIME,BLUE,DARKGREEN,singledrawmode?"Single":"Draw");
+    if(IsKeyPressed(KEY_LEFT_CONTROL)) // shortcut for single/draw mode
+        singledrawmode = !singledrawmode;
     //------ Hovering Led  -----
     DrawText(hoverdatatext,10,GetScreenHeight()/2,15,WHITE);
 
@@ -161,6 +163,7 @@ void Editor::DrawMenu()
             else 
             {
                 data.erase(std::next(data.begin(), curframe));
+                curframe = std::min(curframe,(unsigned int)data.size()-1);
             }
         }
     }

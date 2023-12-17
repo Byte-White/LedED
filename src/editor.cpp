@@ -24,8 +24,10 @@ Editor::~Editor()
 
 int Editor::PushFrame()
 {
-    data.push_back(std::vector<leddata>(w*h));
-    return data.size()-1;
+    auto insertPosition = data.begin() + curframe + 1;
+    data.insert(insertPosition, 1, std::vector<leddata>(w * h));
+    //data.push_back(std::vector<leddata>(w*h));
+    return curframe+1;
 }
 
 
