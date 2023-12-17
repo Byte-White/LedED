@@ -57,9 +57,13 @@ class Editor
     bool leftisholding = false;
     double leftdowntime = 0.0;
     unsigned int curframe = 0;// index of the frame
+    double camera_x = 0.0 ,camera_y = 0.0,camera_scale = 1.0;
+    
+    char hoverdatatext[50];
     private:
     void RGBAMenu();
     void WBMenu();
+    void HandleCamera();
     //returns the index of the frame
     int PushFrame();
 public:

@@ -90,7 +90,8 @@ void  Editor::DrawColorPreview()
 void Editor::DrawMenu()
 {
     Vector2 pos = GetMousePosition();
-
+    // Background of menu
+    DrawRectangle(0,0,180,GetScreenHeight(),COLOR_BACKGROUND);
     DrawColorPreview();
     if(rgb_or_bw == false)
         RGBAMenu();
@@ -109,7 +110,9 @@ void Editor::DrawMenu()
             tab = 2; // Export Menu
         }
     }
-    
+    //------ Hovering Led  -----
+    DrawText(hoverdatatext,10,GetScreenHeight()/2,15,WHITE);
+
     //------ Frame Manager ------
     
     // Frame Browser
