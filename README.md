@@ -18,9 +18,9 @@ LedED is an LED matrix editor designed to generate header files that can be embe
 
 ### Examples
 
-![Example 1](https://github.com/Byte-White/MAX7219-Dev/assets/51212450/4629b9c5-dec6-4e06-8f1a-fcd6a0cf7433)
+![Example 1](https://github.com/Byte-White/LedED/assets/51212450/9f3673fc-cea8-4844-8132-5ec787dddcaa)
 
-![Example 2](https://github.com/Byte-White/WS2812-Dev/assets/51212450/5996d8b4-5e5e-4b3e-a7aa-5759b8fdda84)
+![Example 2](https://github.com/Byte-White/LedED/assets/51212450/ffe56522-9939-4233-ad96-0e69743d7030)
 
 ![Example 3](https://github.com/Byte-White/LedED/assets/51212450/4d2286f2-5aef-4255-a8b7-2dac581fe1ac)
 
@@ -29,7 +29,7 @@ LedED is an LED matrix editor designed to generate header files that can be embe
 
 ### Exported Header File
 
-<img src="https://github.com/Byte-White/MAX7219-Dev/assets/51212450/d83f169a-eb3d-4ed4-a190-c4368762de75" width = 800 height = 400 alt="Exported Header File">
+<img src="https://github.com/Byte-White/LedED/assets/51212450/24facc3d-5dfc-43b5-998f-55d76de852fa" width = 800 height = 400 alt="Exported Header File">
 
 ## Getting Started
 
@@ -52,3 +52,4 @@ This project is licensed under the [MIT License](LICENSE).
 Feel free to contribute or report issues on [GitHub](https://github.com/Byte-White/LedED).
 
 Happy LED programming!
+
