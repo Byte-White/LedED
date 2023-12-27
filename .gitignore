@@ -1,6 +1,8 @@
 # Ignore build and compiled files
 x64/
 Debug/
+build/
+exports/
 
 # Ignore Visual Studio files
 *.suo

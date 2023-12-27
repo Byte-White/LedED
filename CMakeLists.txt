@@ -20,3 +20,9 @@ add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/vendor/raylib)
 
 # Link against the Raylib library
 target_link_libraries(LedED PRIVATE raylib)
+
+#if (MSVC)
+#    # Set the desired runtime library
+#    string(CONCAT CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /MT")
+#    string(CONCAT CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /MTd")
+#endif()
