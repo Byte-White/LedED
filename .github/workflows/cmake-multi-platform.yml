@@ -45,7 +45,7 @@ jobs:
 
     - name: Install dependencies
       if: startsWith(matrix.os, 'ubuntu')
-      run: sudo apt-get install -y libxinerama-dev libxrandr-dev
+      run: sudo apt-get install -y libxinerama-dev libxrandr-dev libxcursor-dev libasound2-dev libpulse-dev libgles2-mesa-dev libx11-dev libxrandr-dev libxi-dev libx11-xcb-dev libgl1-mesa-dev libglu1-mesa-dev
 
     - name: Initialize and update submodule
       run: |
