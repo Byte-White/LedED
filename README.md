@@ -1,5 +1,7 @@
 # LedED - LED Matrix Editor
 
+[![Build Status](https://github.com/Byte-White/LedED/workflows/build/badge.svg)](https://github.com/Byte-White/LedED/actions)
+
 LedED is an LED matrix editor designed to generate header files that can be embedded into your code. It supports the creation of animations with multiple frames and provides options for both RGBA (color) and black/white modes.
 
 ## Features

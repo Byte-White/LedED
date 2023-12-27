@@ -18,11 +18,11 @@ int main(int argc,char** argv)
     {
         if(isdigit(argv[1][0]))
         {
-            w_items = atoi(argv[1]);
+            w_items = std::stoi(argv[1]);
         }
         if(isdigit(argv[2][0]))
         {
-            h_items = atoi(argv[2]);
+            h_items = std::stoi(argv[2]);
         }
         if(argc>3)
         {

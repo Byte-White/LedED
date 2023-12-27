@@ -129,7 +129,7 @@ void Editor::DrawMenu()
         curframe = (unsigned int)std::max(0,std::min((int)curframe+1,(int)data.size()-1));
     }
     char s[10];
-    itoa(curframe,s,10);
+    snprintf(s, sizeof(s), "%d", curframe);
     DrawText(s,75,GetScreenHeight()-80,25,WHITE);
     // New Frame Button 
     DrawRectangle(10,GetScreenHeight()-50,160,40,ORANGE);
