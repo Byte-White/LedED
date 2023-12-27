@@ -45,8 +45,8 @@ jobs:
 
     - name: Install dependencies
       if: startsWith(matrix.os, 'ubuntu')
-      run: sudo apt-get install -y libxrandr-dev
-      
+      run: sudo apt-get install -y libxinerama-dev
+
     - name: Initialize and update submodule
       run: |
         git submodule update --init --recursive
