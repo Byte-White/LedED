@@ -86,6 +86,6 @@ private:
     std::string image_filepath;
     bool pasting_image = false;
     float paste_x=0.f,paste_y =0.f;
-    float texture_width,texture_height;
+    int texture_width,texture_height;
 };
 

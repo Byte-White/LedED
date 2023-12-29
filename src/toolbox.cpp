@@ -9,6 +9,10 @@ extern wchar_t* OpenFileDialog();
 extern char* OpenFileDialog();
 #endif
 
+template <typename T>
+T clamp(T value, T minValue, T maxValue) {
+    return std::min(std::max(value, minValue), maxValue);
+}
 
 void Editor::RenderToolbox()
 {
@@ -75,19 +79,28 @@ void Editor::RenderToolbox()
     GuiLabel({toolboxwindow.x+10,toolboxwindow.y+55,toolboxwindow.width-20,20},image_filepath.c_str());
     if(texture_loaded)
     {
-        //static bool image_should_resize;
-        if(GuiButton({toolboxwindow.x+10,toolboxwindow.y+80,20,20},"-")) texture_width--;
-        if(GuiButton({toolboxwindow.x+30,toolboxwindow.y+80,20,20},"+")) texture_width++;
-        if(GuiButton({toolboxwindow.x+10,toolboxwindow.y+100,20,20},"-")) texture_height--;
-        if(GuiButton({toolboxwindow.x+30,toolboxwindow.y+100,20,20},"+")) texture_height++;
+        // --- old ui with a slider  ---
+        //if(GuiButton({toolboxwindow.x+10,toolboxwindow.y+80,20,20},"-")) texture_width--;
+        //if(GuiButton({toolboxwindow.x+30,toolboxwindow.y+80,20,20},"+")) texture_width++;
+        //if(GuiButton({toolboxwindow.x+10,toolboxwindow.y+100,20,20},"-")) texture_height--;
+        //if(GuiButton({toolboxwindow.x+30,toolboxwindow.y+100,20,20},"+")) texture_height++;
+        //GuiSlider({ toolboxwindow.x + 50, toolboxwindow.y + 125, toolboxwindow.width - 90, 20 }, "Width", 
+        //(std::to_string((int)texture_width)).c_str(), &texture_width, 1, 1080);
+        
+        //GuiSlider({ toolboxwindow.x + 50, toolboxwindow.y + 150, toolboxwindow.width - 90, 20 }, 
+        //"Height", (std::to_string((int)texture_height)).c_str(), &texture_height, 1, 1080);
+        // --- new ui with a spinner ---
+        static int selected_editing_size = 0; // neither
+        if(GuiSpinner({ toolboxwindow.x + 50, toolboxwindow.y + 125, toolboxwindow.width - 90, 20 }, "Width", 
+        &texture_width, 1, 1080, selected_editing_size==1)) selected_editing_size = 1;
+        
+        if(GuiSpinner({ toolboxwindow.x + 50, toolboxwindow.y + 150, toolboxwindow.width - 90, 20 }, 
+        "Height", &texture_height, 1, 1080, selected_editing_size==2)) selected_editing_size = 2;
 
 
-        GuiSlider({ toolboxwindow.x + 50, toolboxwindow.y + 125, toolboxwindow.width - 90, 20 }, "Width", 
-        (std::to_string((int)texture_width)).c_str(), &texture_width, 1, 1080);
-        //image_should_resize = true;
-        GuiSlider({ toolboxwindow.x + 50, toolboxwindow.y + 150, toolboxwindow.width - 90, 20 }, 
-        "Height", (std::to_string((int)texture_height)).c_str(), &texture_height, 1, 1080);
-        //image_should_resize = true;
+        texture_width = clamp(texture_width, 0, 1080);
+        texture_height = clamp(texture_height, 0, 1080);
+        
         
         /*if(image_should_resize)
         {
@@ -140,12 +153,13 @@ void Editor::RenderToolbox()
                 error_message = "";
                 Image img = LoadImageFromTexture(texture);
                 // i is y ; j is x
-                for(int i = (int)paste_y; i<std::min(h,(int)texture_height);i++)
+                for(int i = (int)paste_y; i<std::min(paste_y+h,paste_y+(int)texture_height);i++)
                 {
-                    for(int j = (int)paste_x; j<std::min(w,(int)texture_width);j++)
+                    if(i>=h)break;
+                    for(int j = (int)paste_x; j<std::min(paste_x+w,paste_x+(int)texture_width);j++)
                     {
-                        
-                        Color pixelcolor = GetImageColor(img,j,i);
+                        if(j>=w)break;
+                        Color pixelcolor = GetImageColor(img,j-(int)paste_x,i-(int)paste_y);
                         data[curframe][i*w+j].r = pixelcolor.r;
                         data[curframe][i*w+j].g = pixelcolor.g;
                         data[curframe][i*w+j].b = pixelcolor.b;

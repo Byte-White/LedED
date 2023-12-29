@@ -4,8 +4,10 @@
 #include <string.h>
 #define RAYGUI_IMPLEMENTATION
 #include "raygui.h"
+#ifndef __linux__
 #include "style_terminal.h"
-
+#include "style_cherry.h"
+#endif
 
 
 int main(int argc,char** argv)
@@ -39,8 +41,11 @@ int main(int argc,char** argv)
     }
     
 
-    
+    #ifndef __linux__
     GuiLoadStyleTerminal();
+    //GuiLoadStyleCherry();
+    #endif
+
     Editor editor(w_items,h_items,rgb_or_bw);
     while (!WindowShouldClose())
     {
