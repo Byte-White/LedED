@@ -2,6 +2,9 @@
 #include <iostream>
 #include "editor.h"
 #include <string.h>
+#define RAYGUI_IMPLEMENTATION
+#include "raygui.h"
+#include "style_terminal.h"
 
 
 
@@ -9,7 +12,8 @@ int main(int argc,char** argv)
 {
     InitWindow(800, 450, "LedED");
     
-
+    // Set a custom terminal-style theme
+    // Add more style properties as needed
     SetWindowState(FLAG_WINDOW_RESIZABLE);
     bool rgb_or_bw = false; // false - rgb , true - white/black
     int w_items=8,h_items=8;
@@ -33,13 +37,18 @@ int main(int argc,char** argv)
                 rgb_or_bw = true;
         }
     }
+    
+
+    
+    GuiLoadStyleTerminal();
     Editor editor(w_items,h_items,rgb_or_bw);
     while (!WindowShouldClose())
     {
         BeginDrawing();
-            editor.Render();        
+            editor.Render();
         EndDrawing();
     }
+    
     CloseWindow();
 
     return 0;

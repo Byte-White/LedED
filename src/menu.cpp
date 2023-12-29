@@ -1,5 +1,6 @@
 #include "editor.h"
 #include <string>
+#include "raygui.h"
 
 void Editor::RGBAMenu()
 {

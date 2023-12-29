@@ -74,6 +74,9 @@ void Editor::DrawButtons(const int& x_items, const int& y_items)
     starting_y += (total_height - y_per_item * y_items) / 2; // Center vertically
     //draws grid
     DrawRectangle(starting_x-2,starting_y,(size+2)*x_items+2,(size+2)*y_items,DARKGRAY);
+    //draws paste location
+    if(pasting_image)
+    DrawRectangle(starting_x-2 + (int)paste_x*(size+2),starting_y + (int)paste_y*(size+2),(size+2)*texture_width,(size+2)*texture_height,YELLOW);
     for (int i = 0; i < y_items; i++)
     {
         for (int j = 0; j < x_items; j++)
@@ -104,7 +107,7 @@ void Editor::DrawButtons(const int& x_items, const int& y_items)
             // draws led button
             DrawRectangle(led_x, led_y, size, size, color);
             // can't click it if its behind the menu/toolbar
-            if(led_x>170 && (pos.x >= led_x && pos.x <= led_x + size) && (pos.y >= led_y && pos.y <= led_y + size))
+            if(led_x>170 && led_x<toolboxwindow.x-size && (pos.x >= led_x && pos.x <= led_x + size) && (pos.y >= led_y && pos.y <= led_y + size))
             {
                 SetMouseCursor(MOUSE_CURSOR_CROSSHAIR);
                 cursorishovering = true;
@@ -185,6 +188,7 @@ void Editor::Render()
         DrawButtons(w,h);
         DrawMenu();
         HandleCamera();
+        RenderToolbox();
     }
     else if(tab == 2)
     { // export page

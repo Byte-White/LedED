@@ -1,4 +1,5 @@
 #include "raylib.h"
+#include "raygui.h"
 #include <vector>
 #include <inttypes.h>
 #include <math.h>
@@ -47,25 +48,6 @@ class Editor
             return ss.str();
         }
     };
-    int tab = 1;
-    int w,h; // led screen width, led screen height
-    bool rgb_or_bw; // rgb or white/black colors
-    //bool normalised = false; // false : 0-255 , true : 0.0-1.0
-    std::vector<std::vector<leddata>> data;// color data of each led
-    leddata col;// current color shown in the preview
-    bool cursorishovering = false;
-    bool leftisholding = false;
-    double leftdowntime = 0.0;
-    unsigned int curframe = 0;// index of the frame
-    double camera_x = 0.0 ,camera_y = 0.0,camera_scale = 1.0;
-    bool singledrawmode = true;
-    char hoverdatatext[60];
-    private:
-    void RGBAMenu();
-    void WBMenu();
-    void HandleCamera();
-    //returns the index of the frame
-    int PushFrame();
 public:
     Editor(int w,int h,bool rgb_or_bw);
     ~Editor();
@@ -79,5 +61,31 @@ public:
     void Export(const std::string& path,std::string& error);
     void DrawTextInput(std::string& txt,int x,int y,int n,int font,int& cursorlocation,Color bg = GRAY, Color tc = WHITE);
     bool DrawCheckbox(int x,int y,bool& ticked,Color ctoff = DARKBLUE,Color cton = LIME, Color bgoff = BLUE,Color bgon = DARKGREEN,std::string txt = "");
+    void RenderToolbox();
+private:
+    void RGBAMenu();
+    void WBMenu();
+    void HandleCamera();
+    //returns the index of the frame
+    int PushFrame();
+private:
+ int tab = 1;
+    int w,h; // led screen width, led screen height
+    bool rgb_or_bw; // rgb or white/black colors
+    //bool normalised = false; // false : 0-255 , true : 0.0-1.0
+    std::vector<std::vector<leddata>> data;// color data of each led
+    leddata col;// current color shown in the preview
+    bool cursorishovering = false;
+    bool leftisholding = false;
+    double leftdowntime = 0.0;
+    unsigned int curframe = 0;// index of the frame
+    double camera_x = 0.0 ,camera_y = 0.0,camera_scale = 1.0;
+    bool singledrawmode = true;
+    char hoverdatatext[60];
+    struct Rectangle toolboxwindow;
+    std::string image_filepath;
+    bool pasting_image = false;
+    float paste_x=0.f,paste_y =0.f;
+    float texture_width,texture_height;
 };
 
